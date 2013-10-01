@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+<title>Note App</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<!-- Navigation drawer -->
+	<div id="drawer" style="display:none;">
+		<div id="file-io-container">
+			<div id="save">Save</div>
+			<div id="open">Open</div>
+			<div id="delete">Delete</div>
+		</div>
+
+		<div id="note-options-container">
+			<div id="size">Brush size</div>
+			<div id="size">Brush color</div>
+			<div id="size">Background</div>
+		</div>
+
+		<div id="miscellaneous-container">
+			<div id="settings">Settings</div>
+		</div>
+
+	</div>
+	
+	<button id="toggle" type="button">Toggle</button>
+
+	<!-- Canvas -->
+	<div id="canvas-container">
+		<canvas id="canvas" height="800" width="1000"></canvas>
+	</div>
+
+
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+</body>
+</html>

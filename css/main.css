@@ -1,0 +1,15 @@
+#drawer {
+	background-color: #000;
+	color:red;
+	height:75px;
+	width:100%;
+}
+
+#file-io-container{
+	float:left;
+}
+
+#note-options-container {
+	float-right;
+}
+
