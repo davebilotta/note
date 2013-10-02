@@ -20,34 +20,50 @@ $(document).ready(function () {
 
 	init();
 
-$('#canvas').mousedown(function(e){
-  var mouseX = e.pageX - this.offsetLeft;
-  var mouseY = e.pageY - this.offsetTop;
+	$('#canvas').mousedown(function(e){
+  		var mouseX = e.pageX - this.offsetLeft;
+  		var mouseY = e.pageY - this.offsetTop;
 		
-  paint = true;
-  addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-  redraw();
-});
+  		paint = true;
+  		addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+  		render();
+	});
 
-$('#canvas').mousemove(function(e){
-  if(paint){
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-    redraw();
-  }
-});
+	$('#canvas').mousemove(function(e){
+  		if (paint) {
+    		addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+    		render();
+  		}
+  	});
 
-$('#canvas').mouseup(function(e){
-  paint = false;
-});
+	$('#canvas').mouseup(function(e){
+  		paint = false;
+	});
 
-$('#canvas').mouseleave(function(e){
-  paint = false;
-});
+	$('#canvas').mouseleave(function(e){
+  		paint = false;
+	});
 
-$("#toggle").click(function() {
-	toggleDrawer();
-});
+	$("#toggle").click(function() {
+		toggleDrawer();
+	});
 
+	// ----- IO functions -----
+	$("#save").click(function() {
+		saveFile();
+	});
+
+	$("#open").click(function() {
+		loadFile();
+	});
+
+	$("#delete").click(function() {
+		deleteFile();
+	});
+	// ----- Background options -----
+	$("#line-spacing").click(function() {
+		toggleSpacing();
+	});
 });
 
 function addClick(x, y, dragging)
@@ -58,8 +74,9 @@ function addClick(x, y, dragging)
   clickColor.push(curColor);
 }
 
-function redraw(){
+function render(){
   /* context.strokeStyle = "#df4b26"; */
+  	clearCanvas();
 	renderBackground();
  	renderForeground();
 }
@@ -80,10 +97,17 @@ function init() {
 
 	// Background - eventually pulled from saved preferences
 	bgColor = "#FFFFFF";          // any hex value
-	bgLineColor = "#000000";      // any hex value
+	bgLineColor = "#EEE";      // any hex value
 	bgLineSpacing = "small";      // small, medium or large
-	bgLineWidth = 1;               // 1-10
-	bgLineMode = "both";    // horizontal, vertical, both
+	bgLineWidth = 1;              // 1-10
+	bgLineMode = "both";          // horizontal, vertical, both
+} 
+
+//----------------------------------------
+// General canvas
+//----------------------------------------
+function clearCanvas() {
+	context.clearRect(0,0,width,height);
 }
 
 //----------------------------------------
@@ -92,8 +116,12 @@ function init() {
 function renderBackground() {
 	
 	// Always render background color
-
+// TODO: Need to do this
+	//bgColor = "#FFFFFF";     // any hex value
+	
 	var spacing = determineSpacing();
+	console.log("spacing is " + spacing);
+
 	// Render lines as well
 	switch (bgLineMode) {
 		case "horizontal": renderBgHorizontal(spacing);
@@ -107,7 +135,7 @@ function renderBackground() {
 	}
 }
 
-// THis should probably be stored in a variable
+// This should probably be stored in a variable
 function determineSpacing() {
 	switch(bgLineSpacing) {
 		case "tiny": spacing = 40;
@@ -125,44 +153,27 @@ function determineSpacing() {
 }
 
 function renderBgHorizontal(spacing) {
-	// TODO: Need to do this
-	bgColor = "#FFFFFF";     // any hex value
 	context.strokeStyle = bgLineColor;
-	context.lineJoin = "round";
   	context.lineWidth = bgLineWidth;
 			
-	var lines = Math.floor(height/spacing);
-	var lineSpacing = Math.floor(height/lines);
-	//console.log("lines = " + lines + " lineSpacing = "+lineSpacing);
+	for (var y = 0.5; y < height; y += spacing) {
+  		context.moveTo(0, y);
+  		context.lineTo(width, y);
+	}
 
-  	for (var i=0; i < lines; i++)	{		
-    	context.beginPath();
-    	context.moveTo(0,(i*lineSpacing));
-    	context.lineTo(width,(i*lineSpacing));
-	    context.closePath();
-	    context.stroke();    
-    }
-
+	context.stroke();
 }
 
 function renderBgVertical(spacing) {
-	// TODO: Need to do this
-	bgColor = "#FFFFFF";     // any hex value
 	context.strokeStyle = bgLineColor;
-	context.lineJoin = "round";
   	context.lineWidth = bgLineWidth;
 			
-	var lines = Math.floor(width/spacing);
-	var lineSpacing = Math.floor(width/lines);
-	console.log("lines = " + lines + " lineSpacing = "+lineSpacing);
+	for (var x = 0.5; x < width; x += spacing) {
+  		context.moveTo(x,0);
+  		context.lineTo(x,height);
+	}
 
-  	for (var i=0; i < lines; i++)	{		
-    	context.beginPath();
-    	context.moveTo((i*lineSpacing),0);
-    	context.lineTo((i*lineSpacing),height);
-	    context.closePath();
-	    context.stroke();    
-    }
+	context.stroke();
 }
 
 function renderBgGrid(spacing) {
