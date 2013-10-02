@@ -64,24 +64,6 @@ function redraw(){
  	renderForeground();
 }
 
-function toggleDrawer() {
-	if (drawerVisible) hideDrawer();
-	else showDrawer();
-
-}
-
-function showDrawer() {
-	drawerVisible = true;
-
-	$("#drawer").slideDown("fast");
-}
-
-function hideDrawer() {
-	drawerVisible = false;
-
-	$("#drawer").slideUp("fast");
-}
-
 function init() {
 	context = canvas.getContext("2d");
 	paint = false;
@@ -184,6 +166,7 @@ function renderBgVertical(spacing) {
 }
 
 function renderBgGrid(spacing) {
+
 	renderBgHorizontal(spacing);
 	renderBgVertical(spacing);
 }
