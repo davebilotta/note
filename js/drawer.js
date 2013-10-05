@@ -18,17 +18,16 @@ function hideDrawer() {
 
 function toggleSpacing(val) {
 	switch (val) {
-		case 1: bgLineSpacing = "tiny";
+		case 1: bgLineSpacing = 10;
 		     break;
-		case 2: bgLineSpacing = "small";
+		case 2: bgLineSpacing = 20;
 			break;
-		case 3: bgLineSpacing = "medium";
+		case 3: bgLineSpacing = 30;
 			break;
-		case 4: bgLineSpacing = "large";
+		case 4: bgLineSpacing = 40;
 			break;
-		default: bgLineSpacing = "small";
+		default: bgLineSpacing = 20;
 			break;
 		}
-		console.log("new line spacing is " + bgLineSpacing);
 		render();
 }

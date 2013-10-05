@@ -11,7 +11,6 @@ var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
 var drawerVisible,context, curColor, paint, lineWidth;
-//var spacing;
 var bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
 var width, height;
 
@@ -59,11 +58,8 @@ $(document).ready(function () {
 	$("#delete").click(function() {
 		deleteFile();
 	});
-	// ----- Background options -----
-	$("#line-spacing").click(function() {
-		//toggleSpacing();
-	});
-	// Sliders
+	
+	// Foreground
 	$("#brush-size-slider").slider({
       value: 1,
       min: 1,
@@ -73,7 +69,8 @@ $(document).ready(function () {
       	lineWidth = ui.value;
       }
     });
-    //$("#slider-cont").val($( "#slider" ).slider( "value" ) );
+    // Background
+
   $("#line-spacing-slider").slider({
       value: 1,
       min: 1,
@@ -119,7 +116,7 @@ function init() {
 	// Background - eventually pulled from saved preferences
 	bgColor = "#FFFFFF";          // any hex value
 	bgLineColor = "#EEE";      // any hex value
-	bgLineSpacing = "tiny";      // small, medium or large
+	bgLineSpacing = 10;      
 	bgLineWidth = 1;              // 1-10
 	bgLineMode = "both";          // horizontal, vertical, both
 } 
@@ -140,43 +137,24 @@ function renderBackground() {
 // TODO: Need to do this
 	//bgColor = "#FFFFFF";     // any hex value
 	
-	var spacing = determineSpacing();
-
 	// Render lines as well
 	switch (bgLineMode) {
-		case "horizontal": renderBgHorizontal(spacing);
+		case "horizontal": renderBgHorizontal();
 			break;
-		case "vertical": renderBgVertical(spacing);
+		case "vertical": renderBgVertical();
 			break;
-		case "both": renderBgGrid(spacing);
+		case "both": renderBgGrid();
 			break;
-		default: renderBgGrid(spacing);
+		default: renderBgGrid();
 			break;
 	}
 }
 
-// This should probably be stored in a variable
-function determineSpacing() {
-	switch(bgLineSpacing) {
-		case "tiny": spacing = 10;  //40;
-		     break;
-		case "small": spacing = 20; //35;
-			break;
-		case "medium": spacing = 35; //20;
-			break;
-		case "large": spacing = 40; //10;
-			break;
-		default: spacing = 20;
-			break;
-	}
-	return spacing;
-}
-
-function renderBgHorizontal(spacing) {
+function renderBgHorizontal() {
 	context.strokeStyle = bgLineColor;
   	context.lineWidth = bgLineWidth;
 			
-	for (var y = 0.5; y < height; y += spacing) {
+	for (var y = 0.5; y < height; y += bgLineSpacing) {
   		context.moveTo(0, y);
   		context.lineTo(width, y);
 	}
@@ -184,11 +162,11 @@ function renderBgHorizontal(spacing) {
 	context.stroke();
 }
 
-function renderBgVertical(spacing) {
+function renderBgVertical() {
 	context.strokeStyle = bgLineColor;
   	context.lineWidth = bgLineWidth;
 			
-	for (var x = 0.5; x < width; x += spacing) {
+	for (var x = 0.5; x < width; x += bgLineSpacing) {
   		context.moveTo(x,0);
   		context.lineTo(x,height);
 	}
@@ -196,10 +174,10 @@ function renderBgVertical(spacing) {
 	context.stroke();
 }
 
-function renderBgGrid(spacing) {
+function renderBgGrid() {
 
-	renderBgHorizontal(spacing);
-	renderBgVertical(spacing);
+	renderBgHorizontal();
+	renderBgVertical();
 }
 
 //----------------------------------------
