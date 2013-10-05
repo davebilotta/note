@@ -16,17 +16,17 @@ function hideDrawer() {
 	$("#drawer").slideUp("fast");
 }
 
-function toggleSpacing() {
-	switch (bgLineSpacing) {
-		case "tiny": bgLineSpacing = "small";
+function toggleSpacing(val) {
+	switch (val) {
+		case 1: bgLineSpacing = "tiny";
 		     break;
-		case "small": bgLineSpacing = "medium";
+		case 2: bgLineSpacing = "small";
 			break;
-		case "medium": bgLineSpacing = "large";
+		case 3: bgLineSpacing = "medium";
 			break;
-		case "large": bgLineSpacing = "tiny";
+		case 4: bgLineSpacing = "large";
 			break;
-		default: bgLineSpacing = "medium";
+		default: bgLineSpacing = "small";
 			break;
 		}
 		console.log("new line spacing is " + bgLineSpacing);

@@ -4,6 +4,7 @@
 <head>
 <title>Note App</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 </head>
 
 <body>
@@ -17,9 +18,9 @@
 		</div>
 
 		<div id="note-options-container">
-			<button id="line-spacing" type="button">Line spacing</button>
-			
-			<div id>Brush size</div>
+			<div id="brush-size-slider">Brush size</div>
+			<div id="line-spacing-slider">Line spacing</div>
+					
 			<div id>Brush color</div>
 			<div id>Background</div>
 		</div>
@@ -37,8 +38,8 @@
 		<canvas id="canvas" height="800" width="1000"></canvas>
 	</div>
 
-
 <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/drawer.js" type="text/javascript"></script>
 <script src="js/io.js" type="text/javascript"></script>

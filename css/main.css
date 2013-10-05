@@ -1,15 +1,25 @@
 #drawer {
 	background-color: #000;
 	color:red;
-	height:75px;
+	height:175px;
 	width:100%;
 }
 
 #file-io-container{
-	float:left;
+	float: left;
 }
 
 #note-options-container {
-	float-right;
+	float: right;
+	width: 20%;
+}
+
+#brush-size-slider {
+	width: 100%;
+
+}
+
+#line-spacing-slider {
+	width: 100%;
 }
 

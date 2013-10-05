@@ -9,13 +9,10 @@ var context;
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
-
 var drawerVisible,context, curColor, paint, lineWidth;
 var bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
-
 var width, height;
 
-//ctx = canvas.getContext("2d");
 $(document).ready(function () {
 
 	init();
@@ -62,8 +59,29 @@ $(document).ready(function () {
 	});
 	// ----- Background options -----
 	$("#line-spacing").click(function() {
-		toggleSpacing();
+		//toggleSpacing();
 	});
+	// Sliders
+	$("#brush-size-slider").slider({
+      value: 1,
+      min: 1,
+      max: 10,
+      step: 1,
+      slide: function( event, ui ) {
+        console.log("BRUSH Slide - event: " + event + ", ui: " + ui);
+      }
+    });
+    //$("#slider-cont").val($( "#slider" ).slider( "value" ) );
+  $("#line-spacing-slider").slider({
+      value: 1,
+      min: 1,
+      max: 4,
+      step: 1,
+      slide: function(event, ui) {
+      	toggleSpacing(ui.value);
+		},
+    });
+
 });
 
 function addClick(x, y, dragging)
@@ -98,7 +116,7 @@ function init() {
 	// Background - eventually pulled from saved preferences
 	bgColor = "#FFFFFF";          // any hex value
 	bgLineColor = "#EEE";      // any hex value
-	bgLineSpacing = "small";      // small, medium or large
+	bgLineSpacing = "tiny";      // small, medium or large
 	bgLineWidth = 1;              // 1-10
 	bgLineMode = "both";          // horizontal, vertical, both
 } 
@@ -138,13 +156,13 @@ function renderBackground() {
 // This should probably be stored in a variable
 function determineSpacing() {
 	switch(bgLineSpacing) {
-		case "tiny": spacing = 40;
+		case "tiny": spacing = 10;  //40;
 		     break;
-		case "small": spacing = 35;
+		case "small": spacing = 20; //35;
 			break;
-		case "medium": spacing = 20;
+		case "medium": spacing = 35; //20;
 			break;
-		case "large": spacing = 10;
+		case "large": spacing = 40; //10;
 			break;
 		default: spacing = 20;
 			break;
