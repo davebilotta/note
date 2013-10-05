@@ -4,12 +4,14 @@ var colorYellow = "#ffcf33";
 var colorBrown = "#986928";
 
 var clickColor = new Array();
+var clickWidth = new Array();
 
 var context;
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
 var drawerVisible,context, curColor, paint, lineWidth;
+//var spacing;
 var bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
 var width, height;
 
@@ -68,7 +70,7 @@ $(document).ready(function () {
       max: 10,
       step: 1,
       slide: function( event, ui ) {
-        console.log("BRUSH Slide - event: " + event + ", ui: " + ui);
+      	lineWidth = ui.value;
       }
     });
     //$("#slider-cont").val($( "#slider" ).slider( "value" ) );
@@ -90,6 +92,7 @@ function addClick(x, y, dragging)
   clickY.push(y);
   clickDrag.push(dragging);
   clickColor.push(curColor);
+  clickWidth.push(lineWidth);
 }
 
 function render(){
@@ -110,7 +113,7 @@ function init() {
 
 	// Defaults - eventually pulled from saved preferences
 	lineJoin = "round";
-	lineWidth = 2;
+	lineWidth = 1;
 	curColor = colorBrown;
 
 	// Background - eventually pulled from saved preferences
@@ -138,7 +141,6 @@ function renderBackground() {
 	//bgColor = "#FFFFFF";     // any hex value
 	
 	var spacing = determineSpacing();
-	console.log("spacing is " + spacing);
 
 	// Render lines as well
 	switch (bgLineMode) {
@@ -205,7 +207,7 @@ function renderBgGrid(spacing) {
 //----------------------------------------
 function renderForeground() {
  	context.lineJoin = lineJoin;
-  	context.lineWidth = lineWidth;
+  	//context.lineWidth = lineWidth;
 			
   	for(var i=0; i < clickX.length; i++)
   	{		
@@ -219,6 +221,7 @@ function renderForeground() {
     context.lineTo(clickX[i], clickY[i]);
     context.closePath();
     context.strokeStyle = clickColor[i];
+    context.lineWidth = clickWidth[i];
     context.stroke();
   }
 }
