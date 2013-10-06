@@ -11,7 +11,7 @@ var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
 var drawerVisible,context, curColor, paint, lineWidth;
-var bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
+var fgColor,bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
 var width, height;
 
 $(document).ready(function () {
@@ -33,10 +33,10 @@ function init() {
 	// Defaults - eventually pulled from saved preferences
 	lineJoin = "round";
 	lineWidth = 1;
-	curColor = colorBrown;
+	fgColor = "000000";
 
 	// Background - eventually pulled from saved preferences
-	bgColor = "#FFFFFF";          // any hex value
+	bgColor = "FFFFFF";          // any hex value
 	bgLineColor = "#EEE";      // any hex value
 	bgLineSpacing = 10;      
 	bgLineWidth = 1;              // 1-10
@@ -100,6 +100,15 @@ function registerEventHandlers() {
     // Background
     $("#grid").change(function() {
     	bgLineMode = this.value;
+    });
+
+    $("#fg-color").change(function() {
+    	fgColor = "#"+this.value;
+    });
+
+    $("#bg-line-color").change(function() {
+    	bgLineColor = "#"+this.value;
+    	
     });
 
   $("#line-spacing-slider").slider({
