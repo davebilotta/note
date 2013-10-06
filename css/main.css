@@ -1,25 +1,36 @@
 #drawer {
 	background-color: #000;
 	color:red;
-	height:175px;
+	height:100px;
 	width:100%;
 }
-
+#left {
+	float:left;
+	width: 67%;
+}
 #file-io-container{
 	float: left;
+	width: 50%;
 }
 
-#note-options-container {
+#bg-options-container {
 	float: right;
-	width: 20%;
+	width: 50%;
 }
 
 #brush-size-slider {
-	width: 75%;
+	width:75%;
+	height:10%;
 
 }
 
 #line-spacing-slider {
 	width: 75%;
+	height:10%;
+}
+
+#fg-options-container {
+	float: right;
+	width: 33%;
 }
 
