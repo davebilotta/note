@@ -13,8 +13,9 @@ function loadFile() {
     // assume it is an object that has been stringified
     if (item[0] == "{") {
       noteLoad = JSON.parse(item);
-      console.log("load: " + noteLoad);
+      //console.log("load: " + noteLoad);
 		restoreCanvas(noteLoad);
+		updateNoteInfo();
 		}
 	}
 	}
@@ -28,9 +29,10 @@ function saveFile() {
 	if (typeof note == "object") {
 		note.lastSaveDate = new Date();
       	var noteSave = JSON.stringify(note);
-      	console.log("save; " + noteSave);
+      	//console.log("save; " + noteSave);
     }
     localStorage.setItem(1, noteSave);
+    updateNoteInfo();
 //  },
   }
 }
@@ -55,4 +57,14 @@ function restoreCanvas(src) {
 
 	 render();
 
+}
+
+function updateNoteInfo() {
+	var first = note.createDate;
+	var last = note.lastSaveDate;
+	var title = note.title;
+
+	var str = "<h4>" + title + " created: " + first + " last saved: " + last + "</h4>";
+	//alert(str);
+	$("#file-info").html(str);
 }
