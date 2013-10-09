@@ -18,15 +18,15 @@ function hideDrawer() {
 
 function toggleSpacing(val) {
 	switch (val) {
-		case 1: bgLineSpacing = 10;
+		case 1: note.bgLineSpacing = 10;
 		     break;
-		case 2: bgLineSpacing = 20;
+		case 2: note.bgLineSpacing = 20;
 			break;
-		case 3: bgLineSpacing = 30;
+		case 3: note.bgLineSpacing = 30;
 			break;
-		case 4: bgLineSpacing = 40;
+		case 4: note.bgLineSpacing = 40;
 			break;
-		default: bgLineSpacing = 20;
+		default: note.bgLineSpacing = 20;
 			break;
 		}
 		render();

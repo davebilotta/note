@@ -19,7 +19,8 @@ $(document).ready(function () {
 
 	init();
 	registerEventHandlers();
-
+	// TODO: This needs to bring user to main screen 
+	enumerateFiles();
 });
 
 function init() {
@@ -103,7 +104,7 @@ function registerEventHandlers() {
 
     // Background
     $("#grid").change(function() {
-    	bgLineMode = this.value;
+    	note.bgLineMode = this.value;
     	render();
     });
 
@@ -112,7 +113,7 @@ function registerEventHandlers() {
     });
 
     $("#bg-line-color").change(function() {
-    	bgLineColor = "#"+this.value;
+    	note.bgLineColor = "#"+this.value;
     	
     });
 
@@ -133,6 +134,12 @@ function Note() {
 	this.title = "New Note";
 	this.id = this.createDate;
 	this.lastSaveDate = "";
+
+	this.bgColor = "FFFFFF";          // any hex value
+	this.bgLineColor = "#EEE";      // any hex value
+	this.bgLineSpacing = 10;      
+	this.bgLineWidth = 1;              // 1-10
+	this.bgLineMode = "both";          // horizontal, vertical, both
 
 	this.clickWidth = new Array();
 	this.clickX = new Array();

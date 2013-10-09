@@ -22,7 +22,7 @@ function renderBackground() {
 	//bgColor = "#FFFFFF";     // any hex value
 	
 	// Render lines as well
-	switch (bgLineMode) {
+	switch (note.bgLineMode) {
 		case "horizontal": renderBgHorizontal();
 			break;
 		case "vertical": renderBgVertical();
@@ -36,10 +36,10 @@ function renderBackground() {
 }
 
 function renderBgHorizontal() {
-	context.strokeStyle = bgLineColor;
-  	context.lineWidth = bgLineWidth;
+	context.strokeStyle = note.bgLineColor;
+  	context.lineWidth = note.bgLineWidth;
 			
-	for (var y = 0.5; y < height; y += bgLineSpacing) {
+	for (var y = 0.5; y < height; y += note.bgLineSpacing) {
   		context.moveTo(0, y);
   		context.lineTo(width, y);
 	}
@@ -48,10 +48,10 @@ function renderBgHorizontal() {
 }
 
 function renderBgVertical() {
-	context.strokeStyle = bgLineColor;
-  	context.lineWidth = bgLineWidth;
+	context.strokeStyle = note.bgLineColor;
+  	context.lineWidth = note.bgLineWidth;
 			
-	for (var x = 0.5; x < width; x += bgLineSpacing) {
+	for (var x = 0.5; x < width; x += note.bgLineSpacing) {
   		context.moveTo(x,0);
   		context.lineTo(x,height);
 	}
@@ -88,3 +88,4 @@ function renderForeground() {
     context.stroke();
   }
 }
+

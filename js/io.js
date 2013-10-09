@@ -14,7 +14,7 @@ function loadFile() {
     if (item[0] == "{") {
       noteLoad = JSON.parse(item);
       //console.log("load: " + noteLoad);
-		restoreCanvas(noteLoad);
+		restoreNote(noteLoad);
 		updateNoteInfo();
 		}
 	}
@@ -43,20 +43,32 @@ function deleteFile() {
 	}
 }
 
+function enumerateFiles() {
+	console.log("enumerating files");
+	for(var i in localStorage) {
+    	console.log(localStorage[i]);
+	}
+}
+
 function checkAPILevel() {
 	return true;
 }
 
-function restoreCanvas(src) {
+function restoreNote(src) {
 	// src will be put into note
-	 note.clickX = src.clickX;
-	 note.clickY = src.clickY;
-	 note.clickDrag = src.clickDrag;
-	 note.clickColor = src.clickColor;
-	 note.clickWidth = src.clickWidth;
+	note.clickX = src.clickX;
+	note.clickY = src.clickY;
+	note.clickDrag = src.clickDrag;
+	note.clickColor = src.clickColor;
+	note.clickWidth = src.clickWidth;
 
-	 render();
+	note.bgColor = src.bgColor;
+	note.bgLineColor = src.bgLineColor;
+	note.bgLineSpacing = src.bgLineSpacing;
+	note.bgLineWidth = src.bgLineWidth;
+	note.bgLineMode = src.bgLineMode;
 
+	render();
 }
 
 function updateNoteInfo() {
