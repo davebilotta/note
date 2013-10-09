@@ -1,18 +1,19 @@
-var colorPurple = "#cb3594";
+/*var colorPurple = "#cb3594";
 var colorGreen = "#659b41";
 var colorYellow = "#ffcf33";
 var colorBrown = "#986928";
+*/
 
-var clickColor = new Array();
-var clickWidth = new Array();
+//var clickColor = new Array();
+//var clickWidth = new Array();
 
 var context;
-var clickX = new Array();
-var clickY = new Array();
-var clickDrag = new Array();
 var drawerVisible,context, curColor, paint, lineWidth;
 var fgColor,bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
 var width, height;
+
+var note;
+var drawerImage;
 
 $(document).ready(function () {
 
@@ -29,6 +30,9 @@ function init() {
 	// TODO: Need to adjust when screen is resized
 	width = window.innerWidth;
 	height = window.innerHeight;
+
+	note = new Note();
+	//drawerImage.src="/";
 
 	// Defaults - eventually pulled from saved preferences
 	lineJoin = "round";
@@ -100,6 +104,7 @@ function registerEventHandlers() {
     // Background
     $("#grid").change(function() {
     	bgLineMode = this.value;
+    	render();
     });
 
     $("#fg-color").change(function() {
@@ -121,4 +126,19 @@ function registerEventHandlers() {
       	toggleSpacing(ui.value);
 		},
     });
+}
+
+function Note() {
+	this.createDate = new Date();
+	this.title = "New Note";
+	this.id = this.createDate;
+	this.lastSaveDate = "";
+
+	this.clickWidth = new Array();
+	this.clickX = new Array();
+	this.clickY = new Array();
+	this.clickDrag = new Array();
+	this.clickColor = new Array();
+	
+	console.log(this.createDate);
 }

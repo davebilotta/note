@@ -30,8 +30,8 @@ function renderBackground() {
 		case "both": renderBgGrid();
 			break;
 		case "none": break;
-		default: renderBgGrid();
-			break;
+		//default: renderBgGrid();
+		//	break;
 	}
 }
 
@@ -72,19 +72,19 @@ function renderForeground() {
  	context.lineJoin = lineJoin;
   	//context.lineWidth = lineWidth;
 			
-  	for(var i=0; i < clickX.length; i++)
+  	for(var i=0; i < note.clickX.length; i++)
   	{		
     	context.beginPath();
-    	if (clickDrag[i] && i){
-      		context.moveTo(clickX[i-1], clickY[i-1]);
+    	if (note.clickDrag[i] && i){
+      		context.moveTo(note.clickX[i-1], note.clickY[i-1]);
     	}
     	else {
-    		context.moveTo(clickX[i]-1, clickY[i]);
+    		context.moveTo(note.clickX[i]-1, note.clickY[i]);
     	}
-    context.lineTo(clickX[i], clickY[i]);
+    context.lineTo(note.clickX[i], note.clickY[i]);
     context.closePath();
-    context.strokeStyle = clickColor[i];
-    context.lineWidth = clickWidth[i];
+    context.strokeStyle = note.clickColor[i];
+    context.lineWidth = note.clickWidth[i];
     context.stroke();
   }
 }

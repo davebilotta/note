@@ -1,8 +1,8 @@
 function addClick(x, y, dragging)
 {
-  clickX.push(x);
-  clickY.push(y);
-  clickDrag.push(dragging);
-  clickColor.push(fgColor);
-  clickWidth.push(lineWidth);
+  note.clickX.push(x);
+  note.clickY.push(y);
+  note.clickDrag.push(dragging);
+  note.clickColor.push(fgColor);
+  note.clickWidth.push(lineWidth);
 }
