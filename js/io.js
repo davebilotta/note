@@ -1,8 +1,8 @@
 // Contains general file I/O functions
 
 function loadFile() {
-	if(checkAPILevel()) {
-		console.log("Loading file");
+	
+	console.log("Loading file");
 
     var item = localStorage.getItem(1);
 
@@ -18,13 +18,10 @@ function loadFile() {
 		updateNoteInfo();
 		}
 	}
-	}
-
 }
 
 function saveFile() {
-	if(checkAPILevel()) {
-		console.log("Saving file");
+	console.log("Saving file");
 
 	if (typeof note == "object") {
 		note.lastSaveDate = new Date();
@@ -33,20 +30,29 @@ function saveFile() {
     }
     localStorage.setItem(1, noteSave);
     updateNoteInfo();
-//  },
-  }
 }
 
 function deleteFile() {
-	if(checkAPILevel()) {
-		console.log("Deleting file");
-	}
+	console.log("Deleting file");
+	
 }
 
-function enumerateFiles() {
-	console.log("enumerating files");
-	for(var i in localStorage) {
-    	console.log(localStorage[i]);
+function savedNotesExist() {
+	
+	//for(var i in localStorage) {
+    //	console.log(localStorage[i]);
+	//}
+	var cnt = 0;
+
+	for (var i in localStorage) {
+		savedNotes[cnt] = i;
+		cnt++;
+	}
+	if (cnt > 0) {
+		return true;
+	}
+	else {
+		return false;
 	}
 }
 
@@ -79,4 +85,9 @@ function updateNoteInfo() {
 	var str = "<h4>" + title + " created: " + first + " last saved: " + last + "</h4>";
 	//alert(str);
 	$("#file-info").html(str);
+}
+
+function newNote() {
+	hideCreateNew();
+	showCanvas();
 }

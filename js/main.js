@@ -1,12 +1,3 @@
-/*var colorPurple = "#cb3594";
-var colorGreen = "#659b41";
-var colorYellow = "#ffcf33";
-var colorBrown = "#986928";
-*/
-
-//var clickColor = new Array();
-//var clickWidth = new Array();
-
 var context;
 var drawerVisible,context, curColor, paint, lineWidth;
 var fgColor,bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
@@ -14,16 +5,17 @@ var width, height;
 
 var note;
 var drawerImage;
+var savedNotes = new Array();
 
 $(document).ready(function () {
-
-	init();
+	// TODO: checkAPILevel first
+	initMenu();
+	initCanvas();
 	registerEventHandlers();
-	// TODO: This needs to bring user to main screen 
-	enumerateFiles();
+	
 });
 
-function init() {
+function initCanvas() {
 	context = canvas.getContext("2d");
 	paint = false;
 	drawerVisible = false;
@@ -64,6 +56,10 @@ function registerEventHandlers() {
     		render();
   		}
   	});
+
+	$('#newNote').click(function() {
+		newNote();
+	});
 
 	$('#canvas').mouseup(function(e){
   		paint = false;
