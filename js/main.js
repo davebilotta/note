@@ -78,7 +78,7 @@ function registerEventHandlers() {
 		saveFile();
 	});
 
-	$("#open").click(function() {
+	$("#load").click(function() {
 		loadFile();
 	});
 
