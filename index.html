@@ -19,27 +19,25 @@
 					<li class="delete"><a href="#" id="delete"></a></li>
 				</ul>
 			</div>
-
-			<div id="settings">Settings</div>
 		</div>
 
-		<div id="bg-options-container">
-			<select id="grid">
-				<option value="none">None</option>
-				<option value="horizontal">Horizontal</option>
-				<option value="vertical">Vertical</option>
-				<option value="both">Both</option>
-			</select>
-		
-			<div id="line-spacing-slider">Line spacing</div>
-			<input id="bg-line-color">Background line color</input>
-		</div>
-		</div>	
-		
-		<div id="fg-options-container">
-			<div id="brush-size-slider">Brush size</div>
-			<input id="fg-color">Brush color</input>
+		<div id="right">
+			<div id="bg-options-container">
+				BG lines<select id="grid">
+					<option value="none">None</option>
+					<option value="horizontal">Horizontal</option>
+					<option value="vertical">Vertical</option>
+					<option value="both" selected>Both</option>
+				</select>
 			
+				<br>BG line spacing: 1<input type="range" value="2" id="line-spacing-slider" min="1" max="4">4
+				<br>BG line color<input id="bg-line-color"></input>
+			</div>
+			
+			<div id="fg-options-container">
+				Brush Size: 1<input type="range" value="2" id="brush-size-slider" min="1" max="25">25
+				<br>Brush Color<input id="fg-color"></input>
+			</div>
 		</div>
 
 	</div>
@@ -47,7 +45,7 @@
 	<button id="toggle" type="button">Toggle</button>
 	<div id="file-info"></div>
 
-<!-- "images/ui-icons_ffffff_256x240.png" -->
+	<!-- "images/ui-icons_ffffff_256x240.png" -->
 
 	<!-- Canvas -->
 	<div id="canvas-container">

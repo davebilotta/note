@@ -1,26 +1,31 @@
 #drawer {
 	background-color:rgb(237, 71, 50);
 	color:#000;
-	height:29px;
+	height:75px;
 	width:100%;
 }
 #left {
 	float:left;
+	width: 33%;
+}
+
+#right {
+	float:right;
 	width: 67%;
 }
 #file-io-container{
 	float: left;
 	width: 50%;
-	height: 29px;
+	/*height: 29px; */
 	list-style-type:none;
 }
 
 #bg-options-container {
-	float: right;
+	float: left;
 	width: 50%;
 }
 
-#brush-size-slider {
+/*#brush-size-slider {
 	width:75%;
 	height:10%;
 }
@@ -28,11 +33,11 @@
 #line-spacing-slider {
 	width: 75%;
 	height:10%;
-}
+}*/
 
 #fg-options-container {
 	float: right;
-	width: 33%;
+	width: 50%;
 }
 
 a {
@@ -43,34 +48,6 @@ body {
 	font-family: Helvetica,sans-serif,Arial;
 }
 
-
-/*ul.main_menu{float:left;width:100%;padding:0;margin:0;list-style-type:none;}
-ul.main_menu li{float:left;padding:0;margin:0;height:50px;}
-ul.main_menu li a{float:left;display:block;padding:0;margin:0;width:100%;height:100%;}
-ul.main_menu li a span{position:absolute;left:-90000px;}
-ul.main_menu li.menu_item_home{width:70px;background:url('/experiments/css-sprites/css-sprites-menu.jpg') 0 0;}
-ul.main_menu li.menu_item_home a:hover{background:url('/experiments/css-sprites/css-sprites-menu.jpg') 0 52px;}
-ul.main_menu li.menu_item_about_us{width:104px;background:url('/experiments/css-sprites/css-sprites-menu.jpg') -70px 0;}
-ul.main_menu li.menu_item_about_us a:hover{background:url('/experiments/css-sprites/css-sprites-menu.jpg') -70px 52px;}
-ul.main_menu li.menu_item_products{width:96px;background:url('/experiments/css-sprites/css-sprites-menu.jpg') -174px 0;}
-ul.main_menu li.menu_item_products a:hover{background:url('/experiments/css-sprites/css-sprites-menu.jpg') -174px 52px;}
-ul.main_menu li.menu_item_contact_us{width:105px;background:url('/experiments/css-sprites/css-sprites-menu.jpg') -270px 0;}
-ul.main_menu li.menu_item_contact_us a:hover{background:url('/experiments/css-sprites/css-sprites-menu.jpg') -270px 52px;}
-*/
-
-/*#container {
-  position:relative;
-  width: 200px; 
-  height: 200px;
-}
-#container .background {
-  background: url(/web/images/imagepath.png) -215px -759px;
-  width:  50px; 
-  height: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}*/
 
 ul.io_icons{float:left;width:100%;padding:0;margin:0;list-style-type:none;}
 ul.io_icons li{float:left;padding:0;margin:0;height:29px;}

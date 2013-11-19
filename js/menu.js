@@ -1,5 +1,5 @@
 function initMenu() {
-	if (savedNotesExist()) {
+	if (!savedNotesExist()) {
 		// Show "create new"
 		showCreateNew();   // show "Create new"
 		hideCanvas();      // sets canvas to hidden
@@ -7,6 +7,7 @@ function initMenu() {
 	}
 	else {
 		// Present user with list of saved Notes (plus "Create New" option)
+		
 	}
 
 }

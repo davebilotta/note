@@ -13,6 +13,7 @@ $(document).ready(function () {
 	initCanvas();
 	registerEventHandlers();
 	
+	render();
 });
 
 function initCanvas() {
@@ -33,8 +34,8 @@ function initCanvas() {
 	fgColor = "000000";
 
 	// Background - eventually pulled from saved preferences
-	bgColor = "FFFFFF";          // any hex value
-	bgLineColor = "#EEE";      // any hex value
+	bgColor = "FFFFFF";           // any hex value
+	bgLineColor = "#EEE";         // any hex value
 	bgLineSpacing = 10;      
 	bgLineWidth = 1;              // 1-10
 	bgLineMode = "both";          // horizontal, vertical, both
@@ -87,15 +88,8 @@ function registerEventHandlers() {
 	});
 	
 	// Foreground
-	$("#brush-size-slider").slider({
-      //orientation: "vertical",
-      value: 1,
-      min: 1,
-      max: 25,
-      step: 1,
-      slide: function( event, ui ) {
-      	lineWidth = ui.value;
-      }
+    $("#brush-size-slider").change(function() {
+    	lineWidth = parseInt($(this).val());
     });
 
     // Background
@@ -113,7 +107,7 @@ function registerEventHandlers() {
     	
     });
 
-  $("#line-spacing-slider").slider({
+  	/*$("#line-spacing-slider").slider({
       //orientation: "vertical",
       value: 1,
       min: 1,
@@ -122,7 +116,11 @@ function registerEventHandlers() {
       slide: function(event, ui) {
       	toggleSpacing(ui.value);
 		},
-    });
+    });*/
+
+	$('#line-spacing-slider').change(function() {
+  		toggleSpacing(parseInt($(this).val()));
+	});
 }
 
 function Note() {
@@ -130,9 +128,9 @@ function Note() {
 	this.title = "New Note";
 	this.id = this.createDate;
 	this.lastSaveDate = "";
-
-	this.bgColor = "FFFFFF";          // any hex value
-	this.bgLineColor = "#EEE";      // any hex value
+ 
+	this.bgColor = "FFFFFF";           // any hex value
+	this.bgLineColor = "#EEE";         // any hex value
 	this.bgLineSpacing = 10;      
 	this.bgLineWidth = 1;              // 1-10
 	this.bgLineMode = "both";          // horizontal, vertical, both

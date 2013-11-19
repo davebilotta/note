@@ -48,6 +48,7 @@ function savedNotesExist() {
 		savedNotes[cnt] = i;
 		cnt++;
 	}
+	
 	if (cnt > 0) {
 		return true;
 	}
