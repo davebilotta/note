@@ -12,6 +12,7 @@ function showDrawer() {
 }
 
 function hideDrawer() {
+	saveDefaults();
 	drawerVisible = false;
 	$("#drawer").slideUp("fast");
 }

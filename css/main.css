@@ -1,7 +1,7 @@
 #drawer {
 	background-color:rgb(237, 71, 50);
 	color:#000;
-	height:75px;
+	height:100px;
 	width:100%;
 }
 #left {
@@ -34,6 +34,10 @@
 	width: 75%;
 	height:10%;
 }*/
+
+#toggle {
+	margin: 0% 0% 0% 50%;
+}
 
 #fg-options-container {
 	float: right;

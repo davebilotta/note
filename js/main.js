@@ -20,15 +20,13 @@ function initCanvas() {
 	context = canvas.getContext("2d");
 	paint = false;
 	drawerVisible = false;
-	// TODO: Need to adjust the canvas size accordingly
-	// TODO: Need to adjust when screen is resized
-	width = window.innerWidth;
-	height = window.innerHeight;
+
+	onWindowResize();
 
 	note = new Note();
-	//drawerImage.src="/";
 
 	// Defaults - eventually pulled from saved preferences
+	//TODO: loadDefaults();
 	lineJoin = "round";
 	lineWidth = 1;
 	fgColor = "000000";
@@ -107,17 +105,6 @@ function registerEventHandlers() {
     	
     });
 
-  	/*$("#line-spacing-slider").slider({
-      //orientation: "vertical",
-      value: 1,
-      min: 1,
-      max: 4,
-      step: 1,
-      slide: function(event, ui) {
-      	toggleSpacing(ui.value);
-		},
-    });*/
-
 	$('#line-spacing-slider').change(function() {
   		toggleSpacing(parseInt($(this).val()));
 	});
@@ -142,4 +129,16 @@ function Note() {
 	this.clickColor = new Array();
 	
 	console.log(this.createDate);
+}
+
+function onWindowResize() {
+
+	width = window.innerWidth;
+	height = window.innerHeight;
+
+	var w = parseInt(width * .98);
+	var h = parseInt(height * .98);
+
+	$("#canvas").attr("width",w);
+	$("#canvas").attr("height",h);
 }

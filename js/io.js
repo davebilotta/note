@@ -92,3 +92,13 @@ function newNote() {
 	hideCreateNew();
 	showCanvas();
 }
+
+function saveDefaults() {
+	// Save defaults for next time.
+	// Called when the drawer is closed
+	// TODO: Only save if anything has actually changed
+}
+
+function loadDefaults() {
+
+}
