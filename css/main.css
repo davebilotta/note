@@ -1,8 +1,9 @@
 #drawer {
-	background-color:rgb(237, 71, 50);
-	color:#000;
-	height:100px;
-	width:100%;
+	/*background-color: rgb(237, 71, 50);*/
+	background-color: rgb(227,227,227);
+	color: #000;
+	height: 100px;
+	width: 100%;
 }
 #left {
 	float:left;
@@ -34,6 +35,13 @@
 	width: 75%;
 	height:10%;
 }*/
+
+.bgcolor, .fgcolor {
+	width: 50px;
+	height: 25px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
 
 #toggle {
 	margin: 0% 0% 0% 50%;

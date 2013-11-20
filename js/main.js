@@ -9,7 +9,8 @@ var savedNotes = new Array();
 
 $(document).ready(function () {
 	// TODO: checkAPILevel first
-	initMenu();
+	initMain();
+	initDrawer();
 	initCanvas();
 	registerEventHandlers();
 	
@@ -21,6 +22,9 @@ function initCanvas() {
 	paint = false;
 	drawerVisible = false;
 
+	// Todo: remove this later
+	showDrawer();
+	
 	onWindowResize();
 
 	note = new Note();
@@ -71,43 +75,7 @@ function registerEventHandlers() {
 	$("#toggle").click(function() {
 		toggleDrawer();
 	});
-
-	// ----- IO functions -----
-	$("#save").click(function() {
-		saveFile();
-	});
-
-	$("#load").click(function() {
-		loadFile();
-	});
-
-	$("#delete").click(function() {
-		deleteFile();
-	});
 	
-	// Foreground
-    $("#brush-size-slider").change(function() {
-    	lineWidth = parseInt($(this).val());
-    });
-
-    // Background
-    $("#grid").change(function() {
-    	note.bgLineMode = this.value;
-    	render();
-    });
-
-    $("#fg-color").change(function() {
-    	fgColor = "#"+this.value;
-    });
-
-    $("#bg-line-color").change(function() {
-    	note.bgLineColor = "#"+this.value;
-    	
-    });
-
-	$('#line-spacing-slider').change(function() {
-  		toggleSpacing(parseInt($(this).val()));
-	});
 }
 
 function Note() {
@@ -118,7 +86,7 @@ function Note() {
  
 	this.bgColor = "FFFFFF";           // any hex value
 	this.bgLineColor = "#EEE";         // any hex value
-	this.bgLineSpacing = 10;      
+	this.bgLineSpacing = 20;      
 	this.bgLineWidth = 1;              // 1-10
 	this.bgLineMode = "both";          // horizontal, vertical, both
 
@@ -141,4 +109,47 @@ function onWindowResize() {
 
 	$("#canvas").attr("width",w);
 	$("#canvas").attr("height",h);
+}
+
+// Moved from Menu.js
+function initMain() {
+	if (!savedNotesExist()) {
+		// Show "create new"
+		showCreateNew();   // show "Create new"
+		hideCanvas();      // sets canvas to hidden
+	}
+	else {
+		// Present user with list of saved Notes (plus "Create New" option)
+	}
+}
+
+function showCanvas() {
+	var canvas = document.getElementById("canvas");
+	if (canvas.style.visibility = "hidden") {
+		var canvasCont = document.getElementById("canvas-container");
+		canvas.style.display = "block";
+		canvas.style.visibility = "visible";
+	}
+}
+
+function hideCanvas() {
+	// Hides canvas and its container
+
+	var canvas = document.getElementById("canvas");
+	if (canvas.style.visibility = "visible") {
+		var canvasCont = document.getElementById("canvas-container");
+		canvas.style.display = "none";
+		canvas.style.visibility = "hidden";
+	}
+}
+
+function showCreateNew() {
+	var createNewNote = document.getElementById("createNewNote");
+	createNewNote.style.visibility = "visible";
+}
+
+function hideCreateNew() {
+	var createNewNote = document.getElementById("createNewNote");
+	createNewNote.style.visibility = "hidden";
+
 }

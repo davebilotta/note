@@ -102,3 +102,16 @@ function saveDefaults() {
 function loadDefaults() {
 
 }
+
+// Event handlers
+$("#save").click(function() {
+	saveFile();
+});
+
+$("#load").click(function() {
+	loadFile();
+});
+
+$("#delete").click(function() {
+	deleteFile();
+});
