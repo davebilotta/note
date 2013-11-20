@@ -58,6 +58,9 @@ a {
 
 body {
 	font-family: Helvetica,sans-serif,Arial;
+	border: 5px solid #000;
+	padding: 0px;
+	margin: 0px;
 }
 
 
