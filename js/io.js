@@ -28,7 +28,8 @@ function saveFile() {
       	var noteSave = JSON.stringify(note);
       	//console.log("save; " + noteSave);
     }
-    localStorage.setItem(1, noteSave);
+    //localStorage.setItem(1, noteSave);
+    localStorage.setItem(note.id, noteSave);
     updateNoteInfo();
 }
 
@@ -49,6 +50,8 @@ function savedNotesExist() {
 		cnt++;
 	}
 	
+	console.log("There are " + cnt + " saved notes");
+
 	if (cnt > 0) {
 		return true;
 	}
