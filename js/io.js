@@ -38,11 +38,8 @@ function deleteFile() {
 	
 }
 
-function savedNotesExist() {
-	
-	//for(var i in localStorage) {
-    //	console.log(localStorage[i]);
-	//}
+function getNotesFromLocalStorage() {
+	var savedNotes = [];
 	var cnt = 0;
 
 	for (var i in localStorage) {
@@ -50,6 +47,16 @@ function savedNotesExist() {
 		cnt++;
 	}
 	
+	return savedNotes;
+}
+
+function savedNotesExist() {
+	
+	//for(var i in localStorage) {
+    //	console.log(localStorage[i]);
+	//}
+	var cnt = getNotesFromLocalStorage().length;
+
 	console.log("There are " + cnt + " saved notes");
 
 	if (cnt > 0) {

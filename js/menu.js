@@ -41,5 +41,17 @@ function hideCreateNew() {
 }
 
 function displaySavedNotes() {
+	/* Displays notes in a grid of X columns and Y rows */
 
+	var notes = getNotesFromLocalStorage();
+	var noteLoad;
+	var col = 0;
+	
+	$("body").append("<div id='saved-note-container'>");
+	for (var i = 0; i < notes.length; i++) {
+		
+		var noteLoad = JSON.parse(localStorage.getItem(notes[i]));
+		$("body").append("<span id='" + i + "' class='saved-note'>" + noteLoad.title + "</span>");
+	}
+	$("body").append("</div>");
 }

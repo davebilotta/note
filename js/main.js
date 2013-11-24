@@ -4,6 +4,7 @@ var fgColor,bgColor, bgLineColor, bgLineSpacing, bgLineWidth, bgLineMode;
 var width, height;
 
 var note;
+var screen;
 var drawerImage;
 var savedNotes = new Array();
 
@@ -28,6 +29,7 @@ function initCanvas() {
 	onWindowResize();
 
 	note = new Note();
+	screen = new Screen();
 
 	// Defaults - eventually pulled from saved preferences
 	//TODO: loadDefaults();
@@ -102,6 +104,13 @@ function Note() {
 	this.clickColor = new Array();
 	
 	console.log(this.createDate);
+}
+
+function Screen() {
+	// These two should be adjusted based on resolution
+
+	this.numSavedNotes = 9;
+	this.numColumns = 3;
 }
 
 function onWindowResize() {
