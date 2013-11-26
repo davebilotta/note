@@ -22,9 +22,6 @@ function initCanvas() {
 	context = canvas.getContext("2d");
 	paint = false;
 	drawerVisible = false;
-
-	// Todo: remove this later
-	showDrawer();
 	
 	onWindowResize();
 
@@ -77,6 +74,10 @@ function registerEventHandlers() {
 	$("#toggle").click(function() {
 		toggleDrawer();
 	});
+
+	$('.saved-note').click(function() {
+		loadNote($(this).attr("id"));
+	});
 	
 	//$(window).resize(function() {
 	window.onresize = function() {
@@ -88,7 +89,8 @@ function registerEventHandlers() {
 function Note() {
 	this.createDate = new Date();
 	this.title = "New Note";
-	this.id = this.createDate;
+	this.id = this.createDate.getTime();
+	console.log(this.id);
 	this.lastSaveDate = "";
  
 	this.bgColor = "FFFFFF";           // any hex value

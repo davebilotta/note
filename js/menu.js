@@ -1,13 +1,17 @@
 function initMenu() {
+	
+	hideCanvas();
+
 	if (!savedNotesExist()) {
 		// Show "create new"
 		showCreateNew();   // show "Create new"
-		hideCanvas();      // sets canvas to hidden
+	
 	}
 	else {
 		// Present user with list of saved Notes (plus "Create New" option)
 		displaySavedNotes();
 	}
+	
 }
 
 function showCanvas() {
@@ -47,11 +51,12 @@ function displaySavedNotes() {
 	var noteLoad;
 	var col = 0;
 	
-	$("body").append("<div id='saved-note-container'>");
+	$("body").append("<div id='saved-note-container'><ul>");
 	for (var i = 0; i < notes.length; i++) {
 		
 		var noteLoad = JSON.parse(localStorage.getItem(notes[i]));
-		$("body").append("<span id='" + i + "' class='saved-note'>" + noteLoad.title + "</span>");
+		$("body").append("<li id='" + noteLoad.id + "' class='saved-note'>" + noteLoad.title + "</li>");
 	}
-	$("body").append("</div>");
+	$("body").append("</ul></div>");
 }
+

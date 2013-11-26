@@ -58,8 +58,8 @@ a {
 
 body {
 	font-family: Helvetica,sans-serif,Arial;
-	border: 5px solid #000;
-	padding: 0px;
+	/* border: 5px solid #000; */
+	padding: 5px 5px 20px 5px;
 	margin: 0px;
 }
 
@@ -76,13 +76,39 @@ ul.io_icons li.save{width:28px;background:url('../images/icons2.png') -225px 0px
 ul.io_icons li.save a:hover{background:url('../images/icons2.png') -265px 0px;}
 
 .saved-note {
-	width: 25%;
-	border: 1px solid #000;
-	border-radius: 1px;
+	
+-webkit-transition-property: all;
+-moz-transition-property: all;
+-o-transition-property: all;
+transition-property: all;
+-webkit-transition-duration: 0.2s;
+-moz-transition-duration: 0.2s;
+-o-transition-duration: 0.2s;
+transition-duration: 0.2s;
+border: 1px solid rgba(0,0,0,0.7);
+/*background: url("../images/situation/item-tint.png");*/
+width: 115px;
+height: 140px;
+cursor: pointer;
+text-align: center;
+vertical-align: middle;
+color: #000;
+padding: 15px;
+opacity: .8;
+list-style-type: none;
+display:inline;
+margin-right:40px;
 }
 
-#saved-note-container {
+ul {
+list-style: none;
+}
 
+/*
+#saved-note-container {
+list-style-type: none;
+}
+/*
 	-moz-column-count: 3; 
 	-webkit-column-count: 3; 
 	column-count: 3;
@@ -91,4 +117,4 @@ ul.io_icons li.save a:hover{background:url('../images/icons2.png') -265px 0px;}
 	-webkit-column-gap: 40px; 
 	column-gap: 40px;
 
-}
+}*/

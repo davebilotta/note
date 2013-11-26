@@ -1,5 +1,10 @@
 // Contains general file I/O functions
 
+function checkAPILevel() {
+	return true;
+}
+
+// Delete this
 function loadFile() {
 	
 	console.log("Loading file");
@@ -43,8 +48,7 @@ function getNotesFromLocalStorage() {
 	var cnt = 0;
 
 	for (var i in localStorage) {
-		savedNotes[cnt] = i;
-		cnt++;
+		savedNotes[cnt++] = i;
 	}
 	
 	return savedNotes;
@@ -52,9 +56,10 @@ function getNotesFromLocalStorage() {
 
 function savedNotesExist() {
 	
-	//for(var i in localStorage) {
-    //	console.log(localStorage[i]);
-	//}
+	/*for(var i in localStorage) {
+    	console.log(localStorage[i]);
+	}*/
+	
 	var cnt = getNotesFromLocalStorage().length;
 
 	console.log("There are " + cnt + " saved notes");
@@ -67,12 +72,34 @@ function savedNotesExist() {
 	}
 }
 
-function checkAPILevel() {
-	return true;
+
+
+function loadNote(id) {
+	
+	console.log("Loading file " + id);
+
+    var item = localStorage.getItem(id);
+
+    if (!item) {
+    	console.log("Couldn't load file");
+    }
+    else {
+    // assume it is an object that has been stringified
+    //if (item[0] == "{") {
+      	noteLoad = JSON.parse(item);
+		restoreNote(noteLoad);
+		updateNoteInfo();
+
+		showCanvas();
+		render();
+	//	}
+	}
 }
 
 function restoreNote(src) {
 	// src will be put into note
+	note = new Note();
+	
 	note.clickX = src.clickX;
 	note.clickY = src.clickY;
 	note.clickDrag = src.clickDrag;
@@ -85,7 +112,7 @@ function restoreNote(src) {
 	note.bgLineWidth = src.bgLineWidth;
 	note.bgLineMode = src.bgLineMode;
 
-	render();
+	//render();
 }
 
 function updateNoteInfo() {
